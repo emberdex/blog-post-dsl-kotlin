@@ -1,0 +1,2 @@
+# Do not push compiled .class files to version control
+out/
