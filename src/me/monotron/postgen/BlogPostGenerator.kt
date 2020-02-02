@@ -1,7 +1,6 @@
 package me.monotron.postgen
 
 import me.monotron.postgen.dsl.blogPost
-import java.time.LocalDateTime
 
 class Post {
     companion object {
@@ -12,7 +11,7 @@ class Post {
                 }
 
                 date {
-                    + LocalDateTime.now().toString()
+                    + currentDateTime()
                 }
             }
 

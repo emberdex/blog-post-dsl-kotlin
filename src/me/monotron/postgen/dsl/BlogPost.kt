@@ -1,6 +1,8 @@
 package me.monotron.postgen.dsl
 
 import me.monotron.postgen.dsl.exception.InvalidBlogPostException
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 abstract class ContentComponent : MarkdownComponent() {
     operator fun String.unaryPlus() {
@@ -46,8 +48,13 @@ class PostHeader : ContentComponent() {
 }
 
 class PostTitle : ContentComponent()
-class PostDate : ContentComponent()
 class PostContent : PostContentComponent()
+
+class PostDate : ContentComponent() {
+    fun currentDateTime(): String {
+        return ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z"))
+    }
+}
 
 fun blogPost(init: BlogPost.() -> Unit) : BlogPost {
     val blogPost = BlogPost()
